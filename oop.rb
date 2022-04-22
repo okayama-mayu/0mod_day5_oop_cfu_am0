@@ -3,6 +3,21 @@
 # it should have a color attribute, that is silver by default
 # it should have a method called "say" that returns whatever string is passed in, with "*~*" at the beginning and end of the string
 
+class Unicorn
+  def initialize(name)
+    @name = name
+    @color = "silver"
+  end
+
+  def say(strg)
+    "*~* #{strg} *~*"
+  end
+
+end
+
+uni1 = Unicorn.new("Rainbow")
+p uni1
+p uni1.say("My name is Rainbow")
 
 
 #  Write a class called Vampire
@@ -10,6 +25,26 @@
 #  it should have a pet attribute, that is a bat, by default BUT it could be dynamic if info is passed in initially
 #  it should have a thirsty attribute, that is true by default
 #  it should have a drink method. When called, the thirsty attribute changes to false
+
+class Vampire
+
+  def initialize(name, pet = "bat")
+    @name = name
+    @pet = pet
+    @thirsty = true
+  end
+
+  def drink
+    @thirsty = false
+  end
+
+end
+
+vamp1 = Vampire.new("Count", "dog")
+p vamp1
+p vamp1.drink
+p vamp1
+
 
 
 #  Write a Dragon class
@@ -19,6 +54,31 @@
 #  it should have a is_hungry attribute that is true by default
 #  it should have a eat method. If the dragon eats 4 times, it is no longer hungry
 
+class Dragon
+
+  def initialize(name, rider, color, is_hungry = true)
+    @name = name
+    @rider = rider
+    @color = color
+    @is_hungry = is_hungry
+  end
+
+  def eat(num)
+    if num >= 4
+      @is_hungry = false
+    end
+  end
+
+end
+
+dra1 = Dragon.new("Bob", "Nancy", "green")
+p dra1
+
+dra1.eat(3)
+p dra1
+
+dra1.eat(7)
+p dra1
 
 #  Write a Hobbit class
 #  it should have a dynamic name attribute (string)
@@ -28,3 +88,41 @@
 #  it should have an is_adult attribute (boolean) that is false by default. once a Hobbit is 33, it should be an adult
 #  it should have an is_old attribute that defaults to false. once a Hobbit is 101, it is old.
 #  it should have a has_ring attribute. If the Hobbit's name is "Frodo", true, if not, false.
+
+class Hobbit
+
+  def initialize(name, dispo, age = 0)
+    @name = name
+    @disposition = dispo
+    @age = age
+
+    if age >= 33
+      @is_adult = true
+    else
+      @is_adult = false
+    end
+
+    if age >= 101
+      @is_old = true
+    else
+      @is_old = false
+    end
+
+    if name == "Frodo"
+      @has_ring = true
+    else
+      @has_ring = false
+    end
+  end
+
+  def birthday
+    @age = age + 1
+  end
+
+end
+
+hobb1 = Hobbit.new("Frodo", "happy", 120)
+p hobb1
+
+hobb2 = Hobbit.new("Sam", "worried", 24)
+p hobb2
